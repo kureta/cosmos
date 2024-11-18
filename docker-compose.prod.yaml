@@ -1,0 +1,14 @@
+services:
+  cosmos-prod:
+    build:
+      context: .
+      target: production
+      dockerfile: Dockerfile
+    image: cosmos-prod:latest
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
